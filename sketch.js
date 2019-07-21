@@ -65,7 +65,7 @@ function getNewCircle() {
     });
 
     if (!withinOtherCircle) {
-        const color = getCircleColor(x, y);
+        const c = getCircleColor(x, y);
         
         return new Circle(x, y, color(c));
     } else {

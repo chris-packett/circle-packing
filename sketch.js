@@ -2,12 +2,13 @@ let circles;
 let img;
 let pixels;
 const path = 'assets/image.jpeg';
+const codyFunky = 2;
 
-function preload() {
+function preload () {
     img = loadImage(path);
 }
 
-function setup() {
+function setup () {
     createCanvas(398, 500);
 
     pixelDensity(1);
@@ -16,7 +17,7 @@ function setup() {
     circles = [];
 }
 
-function draw() {
+function draw () {
     background(0);
     frameRate(60);
 
@@ -55,7 +56,7 @@ function draw() {
     });
 }
 
-function getNewCircle() {
+function getNewCircle () {
     let withinOtherCircle = false;
     const x = random(0, img.width);
     const y = random(0, img.height);
@@ -66,14 +67,14 @@ function getNewCircle() {
 
     if (!withinOtherCircle) {
         const c = getCircleColor(x, y);
-        
+
         return new Circle(x, y, color(c));
     } else {
         return null;
     }
 }
 
-function checkIfLocationWithinOtherCircle(x, y, circle) {
+function checkIfLocationWithinOtherCircle (x, y, circle) {
     let within = false;
 
     const distance = dist(x, y, circle.x, circle.y);
@@ -85,7 +86,7 @@ function checkIfLocationWithinOtherCircle(x, y, circle) {
     return within;
 }
 
-function checkIfCircleTouchingOtherCircle(circle, other) {
+function checkIfCircleTouchingOtherCircle (circle, other) {
     if (circle !== other) {
         const actualDistance = dist(circle.x, circle.y, other.x, other.y);
         const buffer = 2;
@@ -98,12 +99,12 @@ function checkIfCircleTouchingOtherCircle(circle, other) {
     }
 }
 
-function getCircleColor(x, y) {
+function getCircleColor (x, y) {
     const index = (int(x) + int(y) * img.width) * 4;
 
     const r = img.pixels[index];
-    const g = img.pixels[index+1];
-    const b = img.pixels[index+2];
+    const g = img.pixels[index + 1];
+    const b = img.pixels[index + 2];
 
     return color(r, g, b);
 }

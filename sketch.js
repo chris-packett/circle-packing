@@ -2,6 +2,7 @@ let circles;
 let img;
 let pixels;
 const path = 'assets/image.jpeg';
+const funky = 1;
 const codyFunky = 2;
 
 function preload () {
